@@ -1,0 +1,45 @@
+
+{
+  "verbose": true,
+  "clearMocks": true,
+  "transform": {
+    ".*": "babel-jest"
+  },
+  "setupFiles": ["./jest.setup.js"],
+  "setupTestFrameworkScriptFile": "./jest.setuptest.js",
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|less)$": "<rootDir>/__mocks__/cssStub.js"
+  },
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "moduleDirectories": [
+    "src",
+    "node_modules"
+  ],
+  "modulePaths": [
+    "src"
+  ],
+  "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}",
+    "!**/node_modules/**"
+  ],
+  "coverageDirectory": "./coverage",
+  "notify": true,
+  "roots": [
+    "__tests__/"
+  ],
+  "coverageThreshold": {
+     "global": {
+       "branches": 95,
+       "functions": 95,
+       "lines": 95,
+       "statements": 95
+     }
+   }
+}

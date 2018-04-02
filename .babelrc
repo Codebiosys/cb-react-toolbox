@@ -1,0 +1,14 @@
+{
+  "presets": ["env", "es2015", "stage-0", "react"],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs", "transform-class-properties"]
+    },
+    "development": {
+      "plugins": ["react-docgen"]
+    },
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
+    }
+  }
+}

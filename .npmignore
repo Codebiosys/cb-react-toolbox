@@ -1,0 +1,18 @@
+# Exclude all development files
+.storybook
+__tests__
+__mocks__
+coverage
+docs
+src
+stories
+.babelrc
+.editorconfig
+.eslint*
+.gitignore
+.npmignore
+.travis.yml
+jest.json
+webpack.*
+package-lock.json
+yarn.lock
