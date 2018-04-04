@@ -1,6 +1,8 @@
 // Standalone Components
 
 export { default as ChackBox } from './ChackBox';
+export { NO, SORTA, YES } from './ChackBox';
+
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as FileUploadField } from './FileUploadField';
 export { default as InfiniteTable } from './InfiniteTable';
