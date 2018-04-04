@@ -64,6 +64,8 @@ typings/
 ### Custom additions
 
 coverage
-dist
-es
-lib
+
+# TODO: uncommend when ready to publish to NPM
+#dist
+#es
+#lib
