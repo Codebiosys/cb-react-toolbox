@@ -22,7 +22,7 @@ var _queryString = require('query-string');
 
 var _queryString2 = _interopRequireDefault(_queryString);
 
-var _actions = require('./redux/actions');
+var _actions = require('./actions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

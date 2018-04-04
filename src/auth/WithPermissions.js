@@ -34,7 +34,7 @@ const PERMISSIONS_PATH = 'auth.user.permissions';
  *
  * );
  */
-export class WithPermissions extends React.Component {
+class WithPermissions extends React.Component {
   static propTypes = {
     userPermissions: PropTypes.arrayOf(PropTypes.string).isRequired,
     has: PropTypes.arrayOf(PropTypes.string).isRequired,

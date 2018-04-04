@@ -2,7 +2,7 @@
 
 var _IdleTimer = require('./IdleTimer');
 
-var _actions = require('./redux/actions');
+var _actions = require('./actions');
 
 var dispatch = jest.fn();
 
