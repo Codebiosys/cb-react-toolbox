@@ -2,7 +2,7 @@
   "name": "cb-react-toolbox",
   "version": "0.0.1",
   "private": true,
-  "main": "./dist/cb-react-toolbox.min.js",
+  "main": "./lib/index.js",
   "config": {
     "builddir": "./dist"
   },
