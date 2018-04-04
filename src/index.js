@@ -12,8 +12,8 @@ export { default as TransitionSelect } from './TransitionSelect';
 
 // Authentication/Authorization
 
-export * from './auth';
+export * as auth from './auth';
 
 // General utilites
 
-export * from './utils';
+export * as utils from './utils';
