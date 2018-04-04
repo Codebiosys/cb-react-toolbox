@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { Panel } from 'react-bootstrap';
 
 import WithPermissions from './WithPermissions';
-import { authenticate } from './redux/actions';
-import { getAuthUrl } from './redux/sagas';
+import { authenticate } from './actions';
+import { getAuthUrl } from './sagas';
 
 const PERMISSION_DENIED_MESSAGE = (
   'You do not have access to this application. Please contact your system '

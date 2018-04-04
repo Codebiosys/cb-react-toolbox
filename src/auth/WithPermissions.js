@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { get } from 'lodash';
+
+const PERMISSIONS_PATH = 'auth.user.permissions';
 
 /**
  * WithPermissions renders it's children if and only if all of the permissions
@@ -30,7 +34,7 @@ import PropTypes from 'prop-types';
  *
  * );
  */
-class WithPermissions extends React.Component {
+export class WithPermissions extends React.Component {
   static propTypes = {
     userPermissions: PropTypes.arrayOf(PropTypes.string).isRequired,
     has: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -61,4 +65,15 @@ class WithPermissions extends React.Component {
   };
 }
 
-export default WithPermissions;
+export const mapStateToProps = (state) => {
+  // Get the permissions from the state and extract the codename. We don't need the rest.
+  const userPermissions = get(state, PERMISSIONS_PATH, []).map(({ codename }) => (
+    codename
+  ));
+  return { userPermissions };
+};
+
+export default connect(
+  mapStateToProps,
+  null,
+)(WithPermissions);

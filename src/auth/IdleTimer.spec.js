@@ -1,6 +1,6 @@
 import { mapDispatchToProps } from './IdleTimer';
 
-import { logout } from './redux/actions';
+import { logout } from './actions';
 
 const dispatch = jest.fn();
 

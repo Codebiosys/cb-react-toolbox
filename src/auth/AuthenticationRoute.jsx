@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import { Redirect } from 'react-router-dom';
 import queryString from 'query-string';
 
-import { setToken } from './redux/actions';
+import { setToken } from './actions';
 
 const AuthenticationRoute = ({ setAccessToken, location, next }) => {
   const { access_token } = queryString.parse(location.hash);
