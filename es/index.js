@@ -104,30 +104,30 @@ Object.defineProperty(exports, 'TransitionSelect', {
   }
 });
 
-var _auth2 = require('./auth');
+var _auth = require('./auth');
 
 Object.defineProperty(exports, 'AuthenticationRouter', {
   enumerable: true,
   get: function get() {
-    return _auth2.AuthenticationRouter;
+    return _auth.AuthenticationRouter;
   }
 });
 Object.defineProperty(exports, 'IdleTimer', {
   enumerable: true,
   get: function get() {
-    return _auth2.IdleTimer;
+    return _auth.IdleTimer;
   }
 });
 Object.defineProperty(exports, 'ProtectedComponent', {
   enumerable: true,
   get: function get() {
-    return _auth2.ProtectedComponent;
+    return _auth.ProtectedComponent;
   }
 });
 Object.defineProperty(exports, 'WithPermissions', {
   enumerable: true,
   get: function get() {
-    return _auth2.WithPermissions;
+    return _auth.WithPermissions;
   }
 });
 
@@ -143,7 +143,7 @@ Object.keys(_utils).forEach(function (key) {
   });
 });
 
-var _auth = _interopRequireWildcard(_auth2);
+var auth = _interopRequireWildcard(_auth);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -151,6 +151,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Authentication/Authorization
 
-exports.auth = _auth;
+exports.auth = auth;
 
 // General utilites
