@@ -1,5 +1,7 @@
 'use strict';
 
+import _Object$defineProperty from 'babel-runtime/core-js/object/define-property';
+import _Object$keys from 'babel-runtime/core-js/object/keys';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -133,9 +135,10 @@ Object.defineProperty(exports, 'WithPermissions', {
 
 var _utils = require('./utils');
 
-Object.keys(_utils).forEach(function (key) {
+_Object$keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
+
+  _Object$defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
       return _utils[key];

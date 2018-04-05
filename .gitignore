@@ -66,6 +66,6 @@ typings/
 coverage
 
 # TODO: uncommend when ready to publish to NPM
-#dist
-#es
-#lib
+# dist
+# es
+# lib
