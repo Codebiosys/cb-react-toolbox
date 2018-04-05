@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.validators = exports.formatters = exports.createdUploadLink = undefined;
+exports.createdUploadLink = exports.countryRegionData = undefined;
 
 var _apolloUploadLink = require('./apollo-upload-link');
 
@@ -14,17 +14,34 @@ Object.defineProperty(exports, 'createdUploadLink', {
   }
 });
 
-var _formatters2 = require('./formatters');
+var _formatters = require('./formatters');
 
-var _formatters = _interopRequireWildcard(_formatters2);
+Object.keys(_formatters).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _formatters[key];
+    }
+  });
+});
 
-var _validators2 = require('./validators');
+var _validators = require('./validators');
 
-var _validators = _interopRequireWildcard(_validators2);
+Object.keys(_validators).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _validators[key];
+    }
+  });
+});
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _countryRegionData = require('./country-region-data.json');
+
+var _countryRegionData2 = _interopRequireDefault(_countryRegionData);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.formatters = _formatters;
-exports.validators = _validators;
+exports.countryRegionData = _countryRegionData2.default;
