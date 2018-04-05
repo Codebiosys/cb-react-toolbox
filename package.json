@@ -40,6 +40,7 @@
     "babel-plugin-react-docgen": "^1.8.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-jest": "^20.0.3",
     "babel-preset-latest": "^6.24.1",
