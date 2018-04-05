@@ -15,7 +15,8 @@ export { default as TransitionSelect } from './TransitionSelect';
 // Authentication/Authorization
 
 export * as auth from './auth';
+export { AuthenticationRouter, IdleTimer, ProtectedComponent, WithPermissions } from './auth';
 
 // General utilites
 
-export * as utils from './utils';
+export * from './utils';
