@@ -49,7 +49,7 @@ export const getAuthTokenFromState = state => get(state, 'app.auth.token', null)
 
 export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
 
-export function* checkAuthentication(payload) {
+export function* checkAuthentication({ payload }) {
   const { authLoginEndpoint, authClientId } = payload;
   const token = yield select(getAuthTokenFromState);
 
@@ -65,7 +65,7 @@ export function* checkAuthentication(payload) {
     } else {
       yield put({ type: AUTH_UNAUTHENTICATED });
       yield put({ type: AUTH_CLEAR_AUTHENTICATION });
-      yield call(() => { goToAuth(authLoginEndpoint); });
+      yield call(() => { goToAuth(authLoginEndpoint, authClientId); });
     }
   } catch (e) {
     yield put({ type: AUTH_UNAUTHENTICATED });
