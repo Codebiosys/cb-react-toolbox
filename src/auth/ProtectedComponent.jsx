@@ -6,7 +6,6 @@ import { Panel } from 'react-bootstrap';
 
 import WithPermissions from './WithPermissions';
 import { authenticate } from './actions';
-import { getAuthUrl } from './sagas';
 
 const PERMISSION_DENIED_MESSAGE = (
   'You do not have access to this application. Please contact your system '
@@ -18,6 +17,7 @@ class ProtectedComponent extends Component {
     children: PropTypes.node.isRequired,
     user: PropTypes.object,
     authenticate: PropTypes.func.isRequired,
+    authEndpoint: PropTypes.string.isRequired,
     requiredPermissions: PropTypes.arrayOf(
       PropTypes.string,
     ).isRequired,
@@ -48,7 +48,7 @@ class ProtectedComponent extends Component {
         <Panel.Heading>Permission Denied</Panel.Heading>
         <Panel.Body>
           {PERMISSION_DENIED_MESSAGE}
-          <p><a href={getAuthUrl()}>
+          <p><a href={this.props.authEndpoint}>
             Try logging in with different credentials &#8594;
           </a></p>
         </Panel.Body>

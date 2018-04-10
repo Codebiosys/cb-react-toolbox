@@ -26,8 +26,6 @@ var _WithPermissions2 = _interopRequireDefault(_WithPermissions);
 
 var _actions = require('./actions');
 
-var _sagas = require('./sagas');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -75,7 +73,7 @@ var ProtectedComponent = function (_Component) {
               null,
               _react2.default.createElement(
                 'a',
-                { href: (0, _sagas.getAuthUrl)() },
+                { href: _this.props.authEndpoint },
                 'Try logging in with different credentials \u2192'
               )
             )
@@ -139,6 +137,7 @@ ProtectedComponent.propTypes = {
   children: _propTypes2.default.node.isRequired,
   user: _propTypes2.default.object,
   authenticate: _propTypes2.default.func.isRequired,
+  authEndpoint: _propTypes2.default.string.isRequired,
   requiredPermissions: _propTypes2.default.arrayOf(_propTypes2.default.string).isRequired
 };
 ProtectedComponent.defaultProps = {
