@@ -18,8 +18,11 @@ export { default as TransitionSelect } from './TransitionSelect';
 export { default as auth } from './auth/reduxports';
 
 // export { auth };
-export { AuthenticationRouter, IdleTimer, ProtectedComponent, WithPermissions } from './auth';
+export { AuthenticationRoute, IdleTimer, ProtectedComponent, WithPermissions } from './auth';
 
 // General utilites
 export { countryRegionData, createUploadLink, formatters, validators } from './utils';
+
+export { default as utils } from './utils/utilports';
+
 // export * from './utils';

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.validators = exports.formatters = exports.createUploadLink = exports.countryRegionData = exports.WithPermissions = exports.ProtectedComponent = exports.IdleTimer = exports.AuthenticationRouter = exports.auth = exports.TransitionSelect = exports.SortGlyph = exports.NotificationErrorDisclosure = exports.Messenger = exports.LoadSensor = exports.InfiniteTable = exports.FileUploadField = exports.ErrorBoundary = exports.YES = exports.SORTA = exports.NO = exports.ChackBox = undefined;
+exports.utils = exports.validators = exports.formatters = exports.createUploadLink = exports.countryRegionData = exports.WithPermissions = exports.ProtectedComponent = exports.IdleTimer = exports.AuthenticationRoute = exports.auth = exports.TransitionSelect = exports.SortGlyph = exports.NotificationErrorDisclosure = exports.Messenger = exports.LoadSensor = exports.InfiniteTable = exports.FileUploadField = exports.ErrorBoundary = exports.YES = exports.SORTA = exports.NO = exports.ChackBox = undefined;
 
 var _ChackBox = require('./ChackBox');
 
@@ -115,10 +115,10 @@ Object.defineProperty(exports, 'auth', {
 
 var _auth = require('./auth');
 
-Object.defineProperty(exports, 'AuthenticationRouter', {
+Object.defineProperty(exports, 'AuthenticationRoute', {
   enumerable: true,
   get: function get() {
-    return _auth.AuthenticationRouter;
+    return _auth.AuthenticationRoute;
   }
 });
 Object.defineProperty(exports, 'IdleTimer', {
@@ -164,6 +164,15 @@ Object.defineProperty(exports, 'validators', {
   enumerable: true,
   get: function get() {
     return _utils.validators;
+  }
+});
+
+var _utilports = require('./utils/utilports');
+
+Object.defineProperty(exports, 'utils', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_utilports).default;
   }
 });
 

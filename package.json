@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "moment": "^2.20.1"
+    "moment": "^2.20.1",
+    "query-string": "^5.0.1"
   },
   "peerDependencies": {
     "apollo-link": "^1.2.1",
@@ -23,7 +24,9 @@
     "react-router-dom": "^4.2.2",
     "react-visibility-sensor": "^3.11.0",
     "redux": "^3.7.2",
-    "redux-form": "v7.3.0"
+    "redux-form": "v7.3.0",
+    "react-idle-timer": "^2.0.1",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "@storybook/addon-info": "^3.3.10",
