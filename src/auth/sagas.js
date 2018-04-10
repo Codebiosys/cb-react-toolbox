@@ -10,15 +10,15 @@ import {
   AUTH_CLEAR_AUTHENTICATION,
   AUTH_AUTHENTICATED,
 } from './constants';
+//
+// export const getAuthUrl = (authLoginEndpoint, authClientId) => {
+//   const next = `/auth/o/authorize/?client_id=${authClientId}&response_type=token`;
+//   const encodedNext = encodeURIComponent(next);
+//   return `${authLoginEndpoint}?next=${encodedNext}`;
+// };
 
-export const getAuthUrl = (authLoginEndpoint, authClientId) => {
-  const next = `/auth/o/authorize/?client_id=${authClientId}&response_type=token`;
-  const encodedNext = encodeURIComponent(next);
-  return `${authLoginEndpoint}?next=${encodedNext}`;
-};
-
-export const goToAuth = (authLoginEndpoint, authClientId) => {
-  window.location = getAuthUrl(authLoginEndpoint, authClientId);
+export const goToAuth = (getAuthUrl) => {
+  window.location = getAuthUrl();
 };
 
 export const checkToken = token => (
@@ -50,10 +50,7 @@ export const getAuthTokenFromState = state => get(state, 'app.auth.token', null)
 export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
 
 export function* checkAuthentication({ payload }) {
-  const { authLoginEndpoint, authClientId } = payload;
-  console.log(payload);
-  console.log(authLoginEndpoint);
-  console.log(authClientId);
+  const { getAuthUrl } = payload;
   const token = yield select(getAuthTokenFromState);
 
   try {
@@ -68,13 +65,13 @@ export function* checkAuthentication({ payload }) {
     } else {
       yield put({ type: AUTH_UNAUTHENTICATED });
       yield put({ type: AUTH_CLEAR_AUTHENTICATION });
-      yield call(() => { goToAuth(authLoginEndpoint, authClientId); });
+      yield call(() => { goToAuth(getAuthUrl); });
     }
   } catch (e) {
     yield put({ type: AUTH_UNAUTHENTICATED });
     yield put({ type: AUTH_CLEAR_AUTHENTICATION });
     yield put({ type: AUTH_USER_FAILED });
-    yield call(() => { goToAuth(authLoginEndpoint, authClientId); });
+    yield call(() => { goToAuth(getAuthUrl); });
   }
 }
 
