@@ -18,10 +18,9 @@ var _reactIdleTimer2 = _interopRequireDefault(_reactIdleTimer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var idleTimeout = parseInt(process.env.IDLE_TIMEOUT, 10);
-
 var LogoutIdleTimer = function LogoutIdleTimer(_ref) {
   var logout = _ref.logout,
+      idleTimeout = _ref.idleTimeout,
       children = _ref.children;
   return _react2.default.createElement(
     _reactIdleTimer2.default,
@@ -37,7 +36,12 @@ var LogoutIdleTimer = function LogoutIdleTimer(_ref) {
 
 LogoutIdleTimer.propTypes = {
   logout: _propTypes2.default.func.isRequired,
-  children: _propTypes2.default.node.isRequired
+  children: _propTypes2.default.node.isRequired,
+  idleTimeout: _propTypes2.default.number
+};
+
+LogoutIdleTimer.defaultProps = {
+  idleTimeout: 10
 };
 
 exports.default = LogoutIdleTimer;

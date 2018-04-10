@@ -10,12 +10,7 @@ import {
   AUTH_CLEAR_AUTHENTICATION,
   AUTH_AUTHENTICATED,
 } from './constants';
-//
-// export const getAuthUrl = (authLoginEndpoint, authClientId) => {
-//   const next = `/auth/o/authorize/?client_id=${authClientId}&response_type=token`;
-//   const encodedNext = encodeURIComponent(next);
-//   return `${authLoginEndpoint}?next=${encodedNext}`;
-// };
+
 
 export const goToAuth = (getAuthUrl) => {
   window.location = getAuthUrl();
@@ -51,6 +46,7 @@ export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
 
 export function* checkAuthentication({ payload }) {
   const { getAuthUrl } = payload;
+
   const token = yield select(getAuthTokenFromState);
 
   try {

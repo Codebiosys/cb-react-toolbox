@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAuthUserFromState = exports.getAuthTokenFromState = exports.checkToken = exports.goToAuth = exports.getAuthUrl = undefined;
+exports.getAuthUserFromState = exports.getAuthTokenFromState = exports.checkToken = exports.goToAuth = undefined;
 exports.checkAuthentication = checkAuthentication;
 exports.authSaga = authSaga;
 
@@ -22,13 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(checkAuthentication),
     _marked2 = /*#__PURE__*/regeneratorRuntime.mark(authSaga);
 
-var getAuthUrl = exports.getAuthUrl = function getAuthUrl() {
-  var next = '/auth/o/authorize/?client_id=' + process.env.AUTH_CLIENT_ID + '&response_type=token';
-  var encodedNext = encodeURIComponent(next);
-  return process.env.AUTH_LOGIN_ENDPOINT + '?next=' + encodedNext;
-};
-
-var goToAuth = /* istanbul ignore next */exports.goToAuth = function goToAuth() {
+var goToAuth = exports.goToAuth = function goToAuth(getAuthUrl) {
   window.location = getAuthUrl();
 };
 
@@ -64,88 +58,95 @@ var getAuthUserFromState = exports.getAuthUserFromState = function getAuthUserFr
   return (0, _lodash.get)(state, 'app.auth.user', null);
 };
 
-function checkAuthentication() {
-  var token, _ref, isValid, response, user;
+function checkAuthentication(_ref) {
+  var payload = _ref.payload;
+
+  var getAuthUrl, token, _ref2, isValid, response, user;
 
   return regeneratorRuntime.wrap(function checkAuthentication$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _context.next = 2;
+          getAuthUrl = payload.getAuthUrl;
+          _context.next = 3;
           return (0, _effects.select)(getAuthTokenFromState);
 
-        case 2:
+        case 3:
           token = _context.sent;
-          _context.prev = 3;
-          _context.next = 6;
+          _context.prev = 4;
+          _context.next = 7;
           return checkToken(token);
 
-        case 6:
-          _ref = _context.sent;
-          isValid = _ref.isValid;
-          response = _ref.response;
+        case 7:
+          _ref2 = _context.sent;
+          isValid = _ref2.isValid;
+          response = _ref2.response;
 
           if (!isValid) {
-            _context.next = 19;
+            _context.next = 20;
             break;
           }
 
-          _context.next = 12;
+          _context.next = 13;
           return (0, _effects.put)({ type: _constants.AUTH_AUTHENTICATED });
 
-        case 12:
-          _context.next = 14;
+        case 13:
+          _context.next = 15;
           return response.json();
 
-        case 14:
+        case 15:
           user = _context.sent;
-          _context.next = 17;
+          _context.next = 18;
           return (0, _effects.put)({ type: _constants.AUTH_USER_RETRIEVED, user: user });
 
-        case 17:
-          _context.next = 25;
+        case 18:
+          _context.next = 26;
           break;
 
-        case 19:
-          _context.next = 21;
+        case 20:
+          _context.next = 22;
           return (0, _effects.put)({ type: _constants.AUTH_UNAUTHENTICATED });
 
-        case 21:
-          _context.next = 23;
+        case 22:
+          _context.next = 24;
           return (0, _effects.put)({ type: _constants.AUTH_CLEAR_AUTHENTICATION });
 
-        case 23:
-          _context.next = 25;
-          return (0, _effects.call)(goToAuth);
+        case 24:
+          _context.next = 26;
+          return (0, _effects.call)(function () {
+            goToAuth(getAuthUrl);
+          });
 
-        case 25:
-          _context.next = 37;
+        case 26:
+          _context.next = 38;
           break;
 
-        case 27:
-          _context.prev = 27;
-          _context.t0 = _context['catch'](3);
-          _context.next = 31;
+        case 28:
+          _context.prev = 28;
+          _context.t0 = _context['catch'](4);
+          _context.next = 32;
           return (0, _effects.put)({ type: _constants.AUTH_UNAUTHENTICATED });
 
-        case 31:
-          _context.next = 33;
+        case 32:
+          _context.next = 34;
           return (0, _effects.put)({ type: _constants.AUTH_CLEAR_AUTHENTICATION });
 
-        case 33:
-          _context.next = 35;
+        case 34:
+          _context.next = 36;
           return (0, _effects.put)({ type: _constants.AUTH_USER_FAILED });
 
-        case 35:
-          _context.next = 37;
-          return (0, _effects.call)(goToAuth);
+        case 36:
+          _context.next = 38;
+          return (0, _effects.call)(function () {
+            goToAuth(getAuthUrl);
+          });
 
-        case 37:
+        case 38:
         case 'end':
           return _context.stop();
       }
     }
-  }, _marked, this, [[3, 27]]);
+  }, _marked, this, [[4, 28]]);
 }
 
 function authSaga() {

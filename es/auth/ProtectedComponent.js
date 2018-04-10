@@ -153,10 +153,10 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     authenticate: function authenticate() {
-      dispatch((0, _actions.authenticate)());
+      dispatch((0, _actions.authenticate)(ownProps.authLoginEndpoint, ownProps.authClientId));
     }
   };
 };
