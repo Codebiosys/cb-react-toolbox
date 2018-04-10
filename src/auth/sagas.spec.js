@@ -22,23 +22,12 @@ import {
 const AUTH_LOGIN_ENDPOINT = '/auth/accounts/login/';
 const AUTH_CLIENT_ID = '12345';
 
-const AUTH_LOGIN_ENDPOINT_ORIG = process.env.AUTH_LOGIN_ENDPOINT || AUTH_LOGIN_ENDPOINT;
-const AUTH_CLIENT_ID_ORIG = process.env.AUTH_CLIENT_ID || AUTH_CLIENT_ID;
-
 describe('Sagas', () => {
-  beforeAll(() => {
-    process.env.AUTH_LOGIN_ENDPOINT = AUTH_LOGIN_ENDPOINT;
-    process.env.AUTH_CLIENT_ID = AUTH_CLIENT_ID;
-  });
-  afterAll(() => {
-    process.env.AUTH_LOGIN_ENDPOINT = AUTH_LOGIN_ENDPOINT_ORIG;
-    process.env.AUTH_CLIENT_ID = AUTH_CLIENT_ID_ORIG;
-  });
   describe('getAuthUrl', () => {
     it('should get the valid auth URL.', () => {
-      const url = getAuthUrl();
-      expect(url).toMatch(process.env.AUTH_LOGIN_ENDPOINT);
-      expect(url).toMatch(process.env.AUTH_CLIENT_ID);
+      const url = getAuthUrl(AUTH_LOGIN_ENDPOINT, AUTH_CLIENT_ID);
+      expect(url).toMatch(AUTH_LOGIN_ENDPOINT);
+      expect(url).toMatch(AUTH_CLIENT_ID);
     });
   });
 

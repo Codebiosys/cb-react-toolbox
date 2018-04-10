@@ -11,14 +11,14 @@ import {
   AUTH_AUTHENTICATED,
 } from './constants';
 
-export const getAuthUrl = () => {
-  const next = `/auth/o/authorize/?client_id=${process.env.AUTH_CLIENT_ID}&response_type=token`;
+export const getAuthUrl = (authLoginEndpoint, authClientId) => {
+  const next = `/auth/o/authorize/?client_id=${authClientId}&response_type=token`;
   const encodedNext = encodeURIComponent(next);
-  return `${process.env.AUTH_LOGIN_ENDPOINT}?next=${encodedNext}`;
+  return `${authLoginEndpoint}?next=${encodedNext}`;
 };
 
-export const goToAuth = /* istanbul ignore next */() => {
-  window.location = getAuthUrl();
+export const goToAuth = (authLoginEndpoint, authClientId) => {
+  window.location = getAuthUrl(authLoginEndpoint, authClientId);
 };
 
 export const checkToken = token => (
@@ -49,7 +49,8 @@ export const getAuthTokenFromState = state => get(state, 'app.auth.token', null)
 
 export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
 
-export function* checkAuthentication() {
+export function* checkAuthentication(payload) {
+  const { authLoginEndpoint, authClientId } = payload;
   const token = yield select(getAuthTokenFromState);
 
   try {
@@ -64,13 +65,13 @@ export function* checkAuthentication() {
     } else {
       yield put({ type: AUTH_UNAUTHENTICATED });
       yield put({ type: AUTH_CLEAR_AUTHENTICATION });
-      yield call(goToAuth);
+      yield call(() => { goToAuth(authLoginEndpoint); });
     }
   } catch (e) {
     yield put({ type: AUTH_UNAUTHENTICATED });
     yield put({ type: AUTH_CLEAR_AUTHENTICATION });
     yield put({ type: AUTH_USER_FAILED });
-    yield call(goToAuth);
+    yield call(() => { goToAuth(authLoginEndpoint, authClientId); });
   }
 }
 

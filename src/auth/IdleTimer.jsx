@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import IdleTimer from 'react-idle-timer';
 
-const idleTimeout = parseInt(process.env.IDLE_TIMEOUT, 10);
-
-const LogoutIdleTimer = ({ logout, children }) => (
+const LogoutIdleTimer = ({ logout, idleTimeout, children }) => (
   <IdleTimer
     element={document}
     idleAction={logout}
@@ -19,6 +17,11 @@ const LogoutIdleTimer = ({ logout, children }) => (
 LogoutIdleTimer.propTypes = {
   logout: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  idleTimeout: PropTypes.number,
+};
+
+LogoutIdleTimer.defaultProps = {
+  idleTimeout: 10,
 };
 
 export default LogoutIdleTimer;

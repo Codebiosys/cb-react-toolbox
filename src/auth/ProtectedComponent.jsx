@@ -80,9 +80,9 @@ const mapStateToProps = state => ({
   user: get(state, 'auth.user', false),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   authenticate: () => {
-    dispatch(authenticate());
+    dispatch(authenticate(ownProps.authLoginEndpoint, ownProps.authClientId));
   },
 });
 
