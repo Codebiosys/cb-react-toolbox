@@ -82,7 +82,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   authenticate: () => {
-    dispatch(authenticate(ownProps.authLoginEndpoint, ownProps.authClientId));
+    dispatch(authenticate(ownProps.authEndpoint, ownProps.userEndpoint));
   },
 });
 

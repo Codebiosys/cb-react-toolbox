@@ -8,11 +8,12 @@ exports.clearUser = exports.userRetrieved = exports.logout = exports.setToken = 
 var _constants = require('./constants');
 
 // See ./sagas for implementation.
-var authenticate = exports.authenticate = function authenticate(getAuthUrl) {
+var authenticate = exports.authenticate = function authenticate(authEndpoint, userEndpoint) {
   return {
     type: _constants.AUTH_AUTHENTICATE,
     payload: {
-      getAuthUrl: getAuthUrl
+      authEndpoint: authEndpoint,
+      userEndpoint: userEndpoint
     }
   };
 };
