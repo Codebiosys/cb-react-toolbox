@@ -16,7 +16,7 @@ export const goToAuth = (getAuthUrl) => {
   window.location = getAuthUrl();
 };
 
-export const checkToken = token => (
+export const checkToken = (token, userEndpoint) => (
   new Promise((resolve, reject) => {
     if (!token) {
       reject({ isValid: false, error: { message: 'No token provided' } });
@@ -28,7 +28,7 @@ export const checkToken = token => (
      * validating the token, and fetching the current token-bearing user.
      */
 
-    fetch('/auth/user/', {
+    fetch(userEndpoint, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -45,12 +45,12 @@ export const getAuthTokenFromState = state => get(state, 'app.auth.token', null)
 export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
 
 export function* checkAuthentication({ payload }) {
-  const { getAuthUrl } = payload;
+  const { authEndpoint, userEndpoint } = payload;
 
   const token = yield select(getAuthTokenFromState);
 
   try {
-    const { isValid, response } = yield checkToken(token);
+    const { isValid, response } = yield checkToken(token, userEndpoint);
     if (isValid) {
       // We have a valid user token.
       yield put({ type: AUTH_AUTHENTICATED });
@@ -61,13 +61,13 @@ export function* checkAuthentication({ payload }) {
     } else {
       yield put({ type: AUTH_UNAUTHENTICATED });
       yield put({ type: AUTH_CLEAR_AUTHENTICATION });
-      yield call(() => { goToAuth(getAuthUrl); });
+      yield call(() => { goToAuth(authEndpoint); });
     }
   } catch (e) {
     yield put({ type: AUTH_UNAUTHENTICATED });
     yield put({ type: AUTH_CLEAR_AUTHENTICATION });
     yield put({ type: AUTH_USER_FAILED });
-    yield call(() => { goToAuth(getAuthUrl); });
+    yield call(() => { goToAuth(authEndpoint); });
   }
 }
 

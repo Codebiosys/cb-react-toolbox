@@ -26,7 +26,7 @@ var goToAuth = exports.goToAuth = function goToAuth(getAuthUrl) {
   window.location = getAuthUrl();
 };
 
-var checkToken = exports.checkToken = function checkToken(token) {
+var checkToken = exports.checkToken = function checkToken(token, userEndpoint) {
   return new Promise(function (resolve, reject) {
     if (!token) {
       reject({ isValid: false, error: { message: 'No token provided' } });
@@ -38,7 +38,7 @@ var checkToken = exports.checkToken = function checkToken(token) {
      * validating the token, and fetching the current token-bearing user.
      */
 
-    (0, _unfetch2.default)('/auth/user/', {
+    (0, _unfetch2.default)(userEndpoint, {
       headers: {
         Authorization: 'Bearer ' + token
       }
@@ -61,13 +61,13 @@ var getAuthUserFromState = exports.getAuthUserFromState = function getAuthUserFr
 function checkAuthentication(_ref) {
   var payload = _ref.payload;
 
-  var getAuthUrl, token, _ref2, isValid, response, user;
+  var authEndpoint, userEndpoint, token, _ref2, isValid, response, user;
 
   return regeneratorRuntime.wrap(function checkAuthentication$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          getAuthUrl = payload.getAuthUrl;
+          authEndpoint = payload.authEndpoint, userEndpoint = payload.userEndpoint;
           _context.next = 3;
           return (0, _effects.select)(getAuthTokenFromState);
 
@@ -75,7 +75,7 @@ function checkAuthentication(_ref) {
           token = _context.sent;
           _context.prev = 4;
           _context.next = 7;
-          return checkToken(token);
+          return checkToken(token, userEndpoint);
 
         case 7:
           _ref2 = _context.sent;
@@ -114,7 +114,7 @@ function checkAuthentication(_ref) {
         case 24:
           _context.next = 26;
           return (0, _effects.call)(function () {
-            goToAuth(getAuthUrl);
+            goToAuth(authEndpoint);
           });
 
         case 26:
@@ -138,7 +138,7 @@ function checkAuthentication(_ref) {
         case 36:
           _context.next = 38;
           return (0, _effects.call)(function () {
-            goToAuth(getAuthUrl);
+            goToAuth(authEndpoint);
           });
 
         case 38:
