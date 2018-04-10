@@ -7,11 +7,10 @@ import {
 } from './constants';
 
 // See ./sagas for implementation.
-export const authenticate = (authLoginEndpoint, authClientId) => ({
+export const authenticate = getAuthUrl => ({
   type: AUTH_AUTHENTICATE,
   payload: {
-    authLoginEndpoint,
-    authClientId,
+    getAuthUrl,
   },
 });
 
