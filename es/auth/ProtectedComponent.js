@@ -156,7 +156,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     authenticate: function authenticate() {
-      dispatch((0, _actions.authenticate)(ownProps.authLoginEndpoint, ownProps.authClientId));
+      dispatch((0, _actions.authenticate)(ownProps.authEndpoint, ownProps.userEndpoint));
     }
   };
 };

@@ -12,8 +12,8 @@ import {
 } from './constants';
 
 
-export const goToAuth = (getAuthUrl) => {
-  window.location = getAuthUrl();
+export const goToAuth = (authEndpoint) => {
+  window.location = authEndpoint;
 };
 
 export const checkToken = (token, userEndpoint) => (
@@ -40,9 +40,9 @@ export const checkToken = (token, userEndpoint) => (
   })
 );
 
-export const getAuthTokenFromState = state => get(state, 'app.auth.token', null);
+export const getAuthTokenFromState = state => get(state, 'auth.token', null);
 
-export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
+export const getAuthUserFromState = state => get(state, 'auth.user', null);
 
 export function* checkAuthentication({ payload }) {
   const { authEndpoint, userEndpoint } = payload;

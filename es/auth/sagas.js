@@ -22,8 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(checkAuthentication),
     _marked2 = /*#__PURE__*/regeneratorRuntime.mark(authSaga);
 
-var goToAuth = exports.goToAuth = function goToAuth(getAuthUrl) {
-  window.location = getAuthUrl();
+var goToAuth = exports.goToAuth = function goToAuth(authEndpoint) {
+  window.location = authEndpoint;
 };
 
 var checkToken = exports.checkToken = function checkToken(token, userEndpoint) {
@@ -51,11 +51,11 @@ var checkToken = exports.checkToken = function checkToken(token, userEndpoint) {
 };
 
 var getAuthTokenFromState = exports.getAuthTokenFromState = function getAuthTokenFromState(state) {
-  return (0, _lodash.get)(state, 'app.auth.token', null);
+  return (0, _lodash.get)(state, 'auth.token', null);
 };
 
 var getAuthUserFromState = exports.getAuthUserFromState = function getAuthUserFromState(state) {
-  return (0, _lodash.get)(state, 'app.auth.user', null);
+  return (0, _lodash.get)(state, 'auth.user', null);
 };
 
 function checkAuthentication(_ref) {
