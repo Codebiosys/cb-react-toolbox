@@ -51,6 +51,9 @@ export const getAuthUserFromState = state => get(state, 'app.auth.user', null);
 
 export function* checkAuthentication({ payload }) {
   const { authLoginEndpoint, authClientId } = payload;
+  console.log(payload);
+  console.log(authLoginEndpoint);
+  console.log(authClientId);
   const token = yield select(getAuthTokenFromState);
 
   try {
