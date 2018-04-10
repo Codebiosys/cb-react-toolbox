@@ -4,15 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getAuthUserFromState = exports.getAuthTokenFromState = exports.checkToken = exports.goToAuth = exports.getAuthUrl = undefined;
-
-var _regenerator = require('babel-runtime/regenerator');
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _promise = require('babel-runtime/core-js/promise');
-
-var _promise2 = _interopRequireDefault(_promise);
-
 exports.checkAuthentication = checkAuthentication;
 exports.authSaga = authSaga;
 
@@ -28,8 +19,8 @@ var _constants = require('./constants');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = /*#__PURE__*/_regenerator2.default.mark(checkAuthentication),
-    _marked2 = /*#__PURE__*/_regenerator2.default.mark(authSaga);
+var _marked = /*#__PURE__*/regeneratorRuntime.mark(checkAuthentication),
+    _marked2 = /*#__PURE__*/regeneratorRuntime.mark(authSaga);
 
 var getAuthUrl = exports.getAuthUrl = function getAuthUrl() {
   var next = '/auth/o/authorize/?client_id=' + process.env.AUTH_CLIENT_ID + '&response_type=token';
@@ -42,7 +33,7 @@ var goToAuth = /* istanbul ignore next */exports.goToAuth = function goToAuth() 
 };
 
 var checkToken = exports.checkToken = function checkToken(token) {
-  return new _promise2.default(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (!token) {
       reject({ isValid: false, error: { message: 'No token provided' } });
       return;
@@ -76,7 +67,7 @@ var getAuthUserFromState = exports.getAuthUserFromState = function getAuthUserFr
 function checkAuthentication() {
   var token, _ref, isValid, response, user;
 
-  return _regenerator2.default.wrap(function checkAuthentication$(_context) {
+  return regeneratorRuntime.wrap(function checkAuthentication$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
@@ -158,7 +149,7 @@ function checkAuthentication() {
 }
 
 function authSaga() {
-  return _regenerator2.default.wrap(function authSaga$(_context2) {
+  return regeneratorRuntime.wrap(function authSaga$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:

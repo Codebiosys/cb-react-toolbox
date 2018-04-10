@@ -5,11 +5,10 @@
       "plugins": ["transform-es2015-modules-commonjs", "transform-class-properties"]
     },
     "development": {
-      "plugins": ["react-docgen"]
+      "plugins": ["transform-runtime", "react-docgen"]
     },
     "production": {
-      "plugins": ["transform-react-remove-prop-types"]
+      "plugins": ["transform-runtime", "transform-react-remove-prop-types"]
     },
   },
-  "plugins": ["transform-runtime"] 
 }

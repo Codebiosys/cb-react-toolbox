@@ -1,16 +1,10 @@
 'use strict';
 
-var _promise = require('babel-runtime/core-js/promise');
-
-var _promise2 = _interopRequireDefault(_promise);
-
 var _effects = require('redux-saga/effects');
 
 var _sagas = require('./sagas');
 
 var _constants = require('./constants');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // fetch is set up in /setupJest.js, and is used here.
 
@@ -115,7 +109,7 @@ describe('Sagas', function () {
 
     it('should allow when the token is valid', function () {
       fetch.mockResponse({ status: 200, json: function json() {
-          return new _promise2.default(function (resolve) {
+          return new Promise(function (resolve) {
             return resolve({});
           });
         } });
@@ -128,7 +122,7 @@ describe('Sagas', function () {
         response: {
           status: 200,
           json: function json() {
-            return new _promise2.default(function (resolve) {
+            return new Promise(function (resolve) {
               return resolve({});
             });
           }

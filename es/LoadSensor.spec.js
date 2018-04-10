@@ -1,12 +1,6 @@
 'use strict';
 
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _promise = require('babel-runtime/core-js/promise');
-
-var _promise2 = _interopRequireDefault(_promise);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
 
@@ -24,7 +18,7 @@ var componentProps = {
   loading: false,
   hasNextPage: true,
   loadMoreEntries: jest.fn(function () {
-    return _promise2.default.resolve();
+    return Promise.resolve();
   })
 };
 
@@ -40,13 +34,13 @@ describe('The Load Sensor', function () {
   });
 
   it('renders the spinner when loading', function () {
-    var loadingProps = (0, _extends3.default)({}, componentProps, { loading: true });
+    var loadingProps = _extends({}, componentProps, { loading: true });
     wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_LoadSensor2.default, loadingProps));
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders All Content Loaded when no more pages', function () {
-    var allLoadedProps = (0, _extends3.default)({}, componentProps, { hasNextPage: false });
+    var allLoadedProps = _extends({}, componentProps, { hasNextPage: false });
     wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_LoadSensor2.default, allLoadedProps));
     expect(wrapper).toMatchSnapshot();
   });

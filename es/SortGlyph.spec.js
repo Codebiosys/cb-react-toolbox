@@ -1,8 +1,6 @@
 'use strict';
 
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
 
@@ -40,19 +38,19 @@ describe('The Sort Glyph', function () {
   });
 
   it('supports alternative sort glyphs', function () {
-    var altProps = (0, _extends3.default)({}, componentProps, { type: 'test' });
+    var altProps = _extends({}, componentProps, { type: 'test' });
     var altWrapper = (0, _enzyme.shallow)(_react2.default.createElement(_SortGlyph2.default, altProps));
     expect(altWrapper.prop('glyph')).toEqual('sort-by-' + altProps.type);
   });
 
   it('Highlights the glyph when the orderBy matches the field', function () {
-    var matchingProps = (0, _extends3.default)({}, componentProps, { orderBy: 'test' });
+    var matchingProps = _extends({}, componentProps, { orderBy: 'test' });
     var matchedwrapper = (0, _enzyme.shallow)(_react2.default.createElement(_SortGlyph2.default, matchingProps));
     expect(matchedwrapper.prop('className')).toEqual('text-success');
   });
 
   it('Displays the alt glyph when the orderBy matches the field and reverse is true', function () {
-    var reversedProps = (0, _extends3.default)({}, componentProps, { orderBy: 'test', reverse: true });
+    var reversedProps = _extends({}, componentProps, { orderBy: 'test', reverse: true });
     var reversedWrapper = (0, _enzyme.shallow)(_react2.default.createElement(_SortGlyph2.default, reversedProps));
     expect(reversedWrapper.prop('glyph')).toEqual('sort-by-' + reversedProps.type + '-alt');
   });
@@ -63,7 +61,7 @@ describe('The Sort Glyph', function () {
   });
 
   it('Reverse orders the data when the sort button is pressed for the current sort', function () {
-    var matchingProps = (0, _extends3.default)({}, componentProps, { orderBy: 'test' });
+    var matchingProps = _extends({}, componentProps, { orderBy: 'test' });
     var matchedwrapper = (0, _enzyme.shallow)(_react2.default.createElement(_SortGlyph2.default, matchingProps));
     matchedwrapper.simulate('click');
     expect(changeSortOrder).toHaveBeenCalledTimes(0);

@@ -4,22 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,6 +22,12 @@ var _LoadSensor2 = _interopRequireDefault(_LoadSensor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
  * A Generic React Component for displaying results from an Apollo Query.
  * This component supports query results that are pending, loading, errored,
@@ -48,20 +38,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * - getObjects: Which objects should the component use to map to the rows?
  */
 var InfiniteTable = function (_React$Component) {
-  (0, _inherits3.default)(InfiniteTable, _React$Component);
+  _inherits(InfiniteTable, _React$Component);
 
   function InfiniteTable() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    (0, _classCallCheck3.default)(this, InfiniteTable);
+    _classCallCheck(this, InfiniteTable);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InfiniteTable.__proto__ || (0, _getPrototypeOf2.default)(InfiniteTable)).call.apply(_ref, [this].concat(args))), _this), _this.getTableHeader = function () {}, _this.getTableRow = function (object) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = InfiniteTable.__proto__ || Object.getPrototypeOf(InfiniteTable)).call.apply(_ref, [this].concat(args))), _this), _this.getTableHeader = function () {}, _this.getTableRow = function (object) {
       /* eslint no-unused-vars: 0 */
       throw new Error('Improperly configured. You forgot to override {getTableRow}.');
     }, _this.getObjects = function () {
@@ -188,7 +178,7 @@ var InfiniteTable = function (_React$Component) {
           )
         )
       );
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   /* Table Methods */

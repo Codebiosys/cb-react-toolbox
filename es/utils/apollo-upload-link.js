@@ -4,17 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _keys = require('babel-runtime/core-js/object/keys');
-
-var _keys2 = _interopRequireDefault(_keys);
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _apolloLink = require('apollo-link');
 
@@ -64,8 +54,8 @@ var createUploadLink = function createUploadLink() {
           _getContext$fetchOpti = _getContext.fetchOptions,
           contextFetchOptions = _getContext$fetchOpti === undefined ? {} : _getContext$fetchOpti;
 
-      var fetchOptions = (0, _extends3.default)({}, linkFetchOptions, contextFetchOptions, {
-        headers: (0, _extends3.default)({}, linkFetchOptions.headers, contextFetchOptions.headers, linkHeaders, contextHeaders),
+      var fetchOptions = _extends({}, linkFetchOptions, contextFetchOptions, {
+        headers: _extends({}, linkFetchOptions.headers, contextFetchOptions.headers, linkHeaders, contextHeaders),
         method: 'POST'
       });
 
@@ -80,7 +70,7 @@ var createUploadLink = function createUploadLink() {
       if (operationName) {
         requestOperation.operationName = operationName;
       }
-      if ((0, _keys2.default)(variables).length) {
+      if (Object.keys(variables).length) {
         requestOperation.variables = variables;
       }
       if (extensions && includeExtensions) {
@@ -96,10 +86,10 @@ var createUploadLink = function createUploadLink() {
 
         // Stringify variables.
         if (requestOperation.variables) {
-          requestOperation.variables = (0, _stringify2.default)(variables);
+          requestOperation.variables = JSON.stringify(variables);
         }
 
-        (0, _keys2.default)(requestOperation).forEach(function (key) {
+        Object.keys(requestOperation).forEach(function (key) {
           fetchOptions.body.append(key, requestOperation[key]);
         });
         files.forEach(function (_ref3, index) {
@@ -109,7 +99,7 @@ var createUploadLink = function createUploadLink() {
         });
       } else {
         fetchOptions.headers['content-type'] = 'application/json';
-        fetchOptions.body = (0, _stringify2.default)(requestOperation);
+        fetchOptions.body = JSON.stringify(requestOperation);
       }
 
       // Perform fetch...

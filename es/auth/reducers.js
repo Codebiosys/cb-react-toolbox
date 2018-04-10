@@ -4,13 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _constants = require('./constants');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultState = {
   /**
@@ -42,19 +38,19 @@ exports.default = function () {
 
   switch (action.type) {
     case _constants.AUTH_SET_AUTHENTICATION:
-      return (0, _extends3.default)({}, state, { token: action.token });
+      return _extends({}, state, { token: action.token });
     case _constants.AUTH_AUTHENTICATED:
-      return (0, _extends3.default)({}, state, { authenticated: true });
+      return _extends({}, state, { authenticated: true });
     case _constants.AUTH_UNAUTHORIZED:
-      return (0, _extends3.default)({}, state, { authenticated: false, token: null });
+      return _extends({}, state, { authenticated: false, token: null });
     case _constants.AUTH_FAILED:
-      return (0, _extends3.default)({}, state, { authenticated: false, token: null, errors: action.errors });
+      return _extends({}, state, { authenticated: false, token: null, errors: action.errors });
     case _constants.AUTH_USER_RETRIEVED:
-      return (0, _extends3.default)({}, state, { user: action.user });
+      return _extends({}, state, { user: action.user });
     case _constants.AUTH_CLEAR_AUTHENTICATION:
-      return (0, _extends3.default)({}, defaultState, { authenticated: false, token: null, user: null });
+      return _extends({}, defaultState, { authenticated: false, token: null, user: null });
     case _constants.AUTH_CLEAR_USER:
-      return (0, _extends3.default)({}, defaultState, { user: null });
+      return _extends({}, defaultState, { user: null });
     default:
       return state;
   }
