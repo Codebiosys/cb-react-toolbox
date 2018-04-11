@@ -5,7 +5,7 @@ import IdleTimer from 'react-idle-timer';
 
 const LogoutIdleTimer = ({ logout, idleTimeout, children }) => (
   <IdleTimer
-    element={document}
+    element={document} // eslint-disable-line
     idleAction={logout}
     timeout={idleTimeout}
     format="MM-DD-YYYY HH:MM:ss.SSS"

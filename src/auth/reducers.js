@@ -25,12 +25,12 @@ const defaultState = {
   /**
    * The current Authentication Token if the user was successfully authenticated.
    */
-  token: localStorage.getItem('accessToken'),
+  token: localStorage.getItem('accessToken'), // eslint-disable-line
 
   /**
    *
    */
-  user: localStorage.getItem('idToken'),
+  user: localStorage.getItem('idToken'), // eslint-disable-line
 };
 
 

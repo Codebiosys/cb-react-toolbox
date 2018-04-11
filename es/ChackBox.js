@@ -44,16 +44,19 @@ var ChackBox = function ChackBox(_ref) {
       onClick = _ref.onClick;
 
   var icon = void 0;
-
+  var ariaChecked = void 0;
   switch (checked) {
     case NO:
       icon = 'square';
+      ariaChecked = 'false';
       break;
     case SORTA:
       icon = 'minus-square';
+      ariaChecked = 'mixed';
       break;
     case YES:
       icon = 'check-square';
+      ariaChecked = 'true';
       break;
     default:
       icon = 'exclamation-circle';
@@ -69,7 +72,7 @@ var ChackBox = function ChackBox(_ref) {
       },
       className: 'chackbox',
       role: 'checkbox',
-      'aria-checked': status !== 'clear',
+      'aria-checked': ariaChecked,
       tabIndex: tabIndex,
       onClick: onClick
     },

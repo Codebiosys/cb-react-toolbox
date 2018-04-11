@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Sort Glyph renders 1`] = `
+<Glyphicon
+  bsClass="glyphicon"
+  className=""
+  glyph="sort-by-alphabet"
+  onClick={[Function]}
+/>
+`;

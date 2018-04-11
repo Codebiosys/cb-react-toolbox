@@ -5,7 +5,10 @@
   "transform": {
     ".*": "babel-jest"
   },
-  "setupFiles": ["./jest.setup.js"],
+  "setupFiles": ["./jest.setup.js",
+    "jest-localstorage-mock",
+    "./setupJest.js"
+  ],
   "setupTestFrameworkScriptFile": "./jest.setuptest.js",
   "snapshotSerializers": [
     "enzyme-to-json/serializer"
@@ -31,9 +34,6 @@
   ],
   "coverageDirectory": "./coverage",
   "notify": true,
-  "roots": [
-    "__tests__/"
-  ],
   "coverageThreshold": {
      "global": {
        "branches": 95,

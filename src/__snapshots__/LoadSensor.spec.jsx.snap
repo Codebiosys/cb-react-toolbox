@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Load Sensor renders 1`] = `
+<VisibilitySensor
+  active={true}
+  containment={null}
+  delayedCall={true}
+  intervalCheck={true}
+  intervalDelay={100}
+  minTopValue={0}
+  offset={Object {}}
+  onChange={[Function]}
+  partialVisibility={false}
+  resizeCheck={false}
+  resizeDelay={250}
+  resizeThrottle={-1}
+  scrollCheck={false}
+  scrollDelay={250}
+  scrollThrottle={-1}
+>
+  <span />
+</VisibilitySensor>
+`;
+
+exports[`The Load Sensor renders All Content Loaded when no more pages 1`] = `
+<center
+  width="100%"
+>
+  All content loaded
+</center>
+`;
+
+exports[`The Load Sensor renders the spinner when loading 1`] = `
+<center>
+  <Icon
+    Component="span"
+    name="refresh"
+    size="2x"
+    spin={true}
+  />
+</center>
+`;

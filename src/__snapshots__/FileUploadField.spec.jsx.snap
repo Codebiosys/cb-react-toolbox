@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The File Upload Field renders 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="file"
+    name="file"
+    onChange={[Function]}
+    type="file"
+  />
+  <div
+    className="input-group col-xs-12"
+  >
+    <span
+      className="input-group-addon"
+    >
+      <i
+        className="glyphicon glyphicon-file"
+      />
+    </span>
+    <span
+      className="form-control text-center input-lg file-input-text-input"
+      disabled={true}
+      readOnly={true}
+      type="text"
+    >
+      <span
+        className="text-muted"
+      />
+    </span>
+    <span
+      className="input-group-btn"
+    >
+      <Button
+        active={false}
+        block={false}
+        bsClass="btn"
+        bsStyle="default"
+        className="browse btn btn-default input-lg"
+        disabled={false}
+        onClick={[Function]}
+      >
+        <i
+          className="glyphicon glyphicon-search"
+        />
+          Browse
+      </Button>
+    </span>
+  </div>
+</div>
+`;

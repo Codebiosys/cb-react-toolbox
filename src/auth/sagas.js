@@ -13,7 +13,7 @@ import {
 
 
 export const goToAuth = (authEndpoint) => {
-  window.location = authEndpoint;
+  window.location = authEndpoint; // eslint-disable-line
 };
 
 export const checkToken = (token, userEndpoint) => (
@@ -61,13 +61,13 @@ export function* checkAuthentication({ payload }) {
     } else {
       yield put({ type: AUTH_UNAUTHENTICATED });
       yield put({ type: AUTH_CLEAR_AUTHENTICATION });
-      yield call(() => { goToAuth(authEndpoint); });
+      yield call(goToAuth, [authEndpoint]);
     }
   } catch (e) {
     yield put({ type: AUTH_UNAUTHENTICATED });
     yield put({ type: AUTH_CLEAR_AUTHENTICATION });
     yield put({ type: AUTH_USER_FAILED });
-    yield call(() => { goToAuth(authEndpoint); });
+    yield call(goToAuth, [authEndpoint]);
   }
 }
 

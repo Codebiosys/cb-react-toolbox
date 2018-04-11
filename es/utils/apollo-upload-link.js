@@ -14,6 +14,10 @@ var _extractFiles = require('extract-files');
 
 var _extractFiles2 = _interopRequireDefault(_extractFiles);
 
+var _unfetch = require('unfetch');
+
+var _unfetch2 = _interopRequireDefault(_unfetch);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -33,7 +37,7 @@ var createUploadLink = function createUploadLink() {
       _ref$fetchOptions = _ref.fetchOptions,
       linkFetchOptions = _ref$fetchOptions === undefined ? {} : _ref$fetchOptions,
       _ref$fetch = _ref.fetch,
-      linkFetch = _ref$fetch === undefined ? fetch : _ref$fetch;
+      linkFetch = _ref$fetch === undefined ? _unfetch2.default : _ref$fetch;
 
   return new _apolloLink.ApolloLink(function (_ref2) {
     var operationName = _ref2.operationName,
@@ -82,7 +86,7 @@ var createUploadLink = function createUploadLink() {
       // Build either the JSON or Form Data Request...
 
       if (files.length) {
-        fetchOptions.body = new FormData();
+        fetchOptions.body = new FormData(); // eslint-disable-line
 
         // Stringify variables.
         if (requestOperation.variables) {

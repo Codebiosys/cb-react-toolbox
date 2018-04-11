@@ -30,16 +30,19 @@ const ChackBox = ({
   onClick,
 }) => {
   let icon;
-
+  let ariaChecked;
   switch (checked) {
     case NO:
       icon = 'square';
+      ariaChecked = 'false';
       break;
     case SORTA:
       icon = 'minus-square';
+      ariaChecked = 'mixed';
       break;
     case YES:
       icon = 'check-square';
+      ariaChecked = 'true';
       break;
     default:
       icon = 'exclamation-circle';
@@ -54,7 +57,7 @@ const ChackBox = ({
       }}
       className="chackbox"
       role="checkbox"
-      aria-checked={status !== 'clear'}
+      aria-checked={ariaChecked}
       tabIndex={tabIndex}
       onClick={onClick}
     ><Icon name={icon} />

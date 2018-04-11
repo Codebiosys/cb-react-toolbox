@@ -1,7 +1,7 @@
 import { ApolloLink, Observable } from 'apollo-link';
 import { print } from 'graphql/language/printer';
 import extractFiles from 'extract-files';
-
+import fetch from 'unfetch';
 /**
  * A modified version of apollo-upload-link by jaydenseric.
  * https://github.com/jaydenseric/apollo-upload-client
@@ -63,7 +63,7 @@ const createUploadLink = ({
       // Build either the JSON or Form Data Request...
 
       if (files.length) {
-        fetchOptions.body = new FormData();
+        fetchOptions.body = new FormData(); // eslint-disable-line
 
         // Stringify variables.
         if (requestOperation.variables) {
