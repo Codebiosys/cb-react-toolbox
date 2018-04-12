@@ -28,6 +28,7 @@ var propTypes = {
   availableTransitions: _propTypes2.default.arrayOf(_propTypes2.default.shape({
     codename: _propTypes2.default.string.isRequired,
     label: _propTypes2.default.string.isRequired,
+    implicit: _propTypes2.default.bool.isRequired,
     target: _propTypes2.default.shape({
       codename: _propTypes2.default.string.isRequired,
       label: _propTypes2.default.string.isRequired
@@ -57,13 +58,16 @@ var TransitionSelect = function TransitionSelect(_ref) {
       onSelect = _ref.onSelect;
 
   if (availableTransitions && availableTransitions.length) {
+    var transitions = (0, _lodash.filter)(availableTransitions, function (transition) {
+      return !transition.implicit;
+    });
     return _react2.default.createElement(
       _reactBootstrap.DropdownButton,
       {
         title: currentState.label,
         id: 'transition-select-' + currentState.codename
       },
-      availableTransitions.map(function (transition) {
+      transitions.map(function (transition) {
         return _react2.default.createElement(
           _reactBootstrap.MenuItem,
           { key: (0, _lodash.uniqueId)(), eventKey: transition.codename, onSelect: onSelect },
