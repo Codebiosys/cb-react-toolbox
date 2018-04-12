@@ -7,7 +7,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import { Icon } from 'react-fa';
-import { uniqueId } from 'lodash';
+import { uniqueId, filter } from 'lodash';
 
 const propTypes = {
   currentState: PropTypes.shape({
@@ -17,6 +17,7 @@ const propTypes = {
   availableTransitions: PropTypes.arrayOf(PropTypes.shape({
     codename: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    implicit: PropTypes.bool.isRequired,
     target: PropTypes.shape({
       codename: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
@@ -46,12 +47,13 @@ const TransitionSelect = ({
   onSelect,
 }) => {
   if (availableTransitions && availableTransitions.length) {
+    const transitions = filter(availableTransitions, transition => !transition.implicit);
     return (
       <DropdownButton
         title={currentState.label}
         id={`transition-select-${currentState.codename}`}
       >
-        {availableTransitions.map(transition => (
+        {transitions.map(transition => (
           <MenuItem key={uniqueId()} eventKey={transition.codename} onSelect={onSelect}>
             {transition.label} <Icon name="arrow-right" /> <Label>{transition.target.label}</Label>
           </MenuItem>
