@@ -26,7 +26,7 @@
   },
   "peerDependencies": {
     "apollo-link": "^1.2.1",
-    "bootstrap": "^3.3.7",
+    "bootstrap-css-only": "^3.3.7",
     "graphql": "^0.13.2",
     "react": "v16.2.0",
     "react-bootstrap": "^0.31.3",
