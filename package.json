@@ -1,14 +1,27 @@
 {
   "name": "cb-react-toolbox",
-  "version": "0.0.1",
-  "private": true,
-  "main": "./dist/cb-react-toolbox.min.js",
-  "config": {
-    "builddir": "./dist"
+  "version": "0.1.0",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "yarn run build:lib",
+    "build:lib": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "prepublish": "npm run clean && npm run build",
+    "test": "cross-env NODE_ENV=test jest --config=jest.json --coverage",
+    "lint": "eslint -c ./.eslintrc.yml --ext .jsx,.js src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codebiosys/cb-react-toolbox.git"
   },
   "dependencies": {
     "lodash": "^4.17.5",
     "moment": "^2.20.1",
+    "react-notification-system-redux": "^1.2.0",
+    "react-router-dom": "^4.3.1",
+    "redux-effects": "^0.4.3",
+    "redux-saga": "^0.16.2",
+    "unfetch": "^4.0.1",
     "yarn": "^1.5.1"
   },
   "peerDependencies": {
@@ -72,7 +85,7 @@
     "prop-types": "^15.5.10",
     "react": "v16.2.0",
     "react-addons-shallow-compare": "^15.6.0",
-    "react-bootstrap": "^0.31.3",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "v16.2.0",
     "react-fa": "^5.0.0",
     "react-idle-timer": "^2.0.1",
@@ -89,26 +102,5 @@
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.3.0"
-  },
-  "scripts": {
-    "build": "yarn run build:lib && yarn run build:es && yarn run build:umd && yarn run build:umd:min",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:lib": "cross-env BABEL_ENV=production babel src --out-dir lib",
-    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/cb-react-toolbox.js",
-    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/cb-react-toolbox.min.js",
-    "clean": "rimraf dist es lib",
-    "prepublish": " yarn run clean && yarn run build",
-    "test": "cross-env NODE_ENV=test jest --config=jest.json --coverage",
-    "lint": "eslint -c ./.eslintrc.yml --ext .jsx,.js src",
-    "storybook": "start-storybook -p 9001 -c .storybook"
-  },
-  "npmName": "cb-react-toolbox",
-  "npmFileMap": [
-    {
-      "basePath": "/dist/",
-      "files": [
-        "*.js"
-      ]
-    }
-  ]
+  }
 }
