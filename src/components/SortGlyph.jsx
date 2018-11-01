@@ -5,7 +5,6 @@ import {
   Glyphicon,
 } from 'react-bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import 'react-datetime/css/react-datetime.css';
 
 
